@@ -44,7 +44,7 @@ export class Coche {
     }
 
     public consumido(t:number){
-        return (this._velocidad/t)*this._consumo
+        return (this._velocidad/t)*(this._consumo/100)
     }
 
     public imprimirCoche(){
