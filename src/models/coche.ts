@@ -28,6 +28,7 @@ export class Coche {
             this._arrancado=true
         }else{
             this._arrancado=false
+            this._velocidad=0
         }
     }
 
