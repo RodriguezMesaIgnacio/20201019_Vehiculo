@@ -37,6 +37,32 @@ const main = async() => {
                 }
                 break
             case 3:
+                console.log('Usted va a borrar un coche')
+                if (coches.length==0){
+                    console.log('No existen coches creados')
+                } else {
+                    console.log('Estos son los coches que existen')
+                    coches.forEach(Coche => {
+                        console.log(`${Coche.imprimirCoche()}`)
+                    });
+                    let m2:String
+                    m2=await leerTeclado('Introduzca la matrícula del coche que quiera borrar')
+                    let e:boolean=false
+                    let index=0
+                    coches.forEach(Coche => {
+                        if (m2==Coche.matricula){
+                            index=coches.indexOf(Coche)
+                            e=true
+                        }
+                    })
+                    if (e){
+                       coches.splice(index,1)
+                    } else {
+                        console.log('No existe ese coche')
+                    }
+                }
+                break
+            case 4:
                 if (coches.length==0){
                     console.log('No existen coches creados')
                 } else {

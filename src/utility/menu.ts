@@ -5,7 +5,8 @@ export const menu = async () => {
     console.log('\n')
     console.log('1.- CREAR COCHE')
     console.log('2.- VER COCHES')
-    console.log('3.- ELEGIR COCHE')
+    console.log('3.- BORRAR COCHE')
+    console.log('4.- ELEGIR COCHE')
     console.log('0.- SALIR')
     n = parseInt( await leerTeclado('--OPCIÓN--') )
     return n
