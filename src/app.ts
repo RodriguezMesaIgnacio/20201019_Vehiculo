@@ -1,6 +1,6 @@
 import { Coche } from './models/coche'
 import { menu, menu2 } from './utility/menu'
-import { leerTeclado } from './utility/lecturaTeclado'
+import { leerTeclado, leeMatricula } from './utility/lecturaTeclado'
 
 const main = async() => {
     let coches: Array<Coche> = new Array()
@@ -11,19 +11,23 @@ const main = async() => {
             case 1:
                 console.log('Usted está creando un nuevo coche')
                 let matricula:string , consumo:number
-                matricula=await leerTeclado('Introduzca la matrícula del coche (XXXXNNN)')
-                consumo = parseInt( await leerTeclado('Introduzca el consumo del vehículo(Litros cada 100KM)'))
-                let coche=new Coche(matricula, consumo)
-                let existe = false
-                coches.forEach(Coche => {
-                    if (coche.matricula==Coche.matricula){
-                        existe=true
+                try {
+                    matricula = await leeMatricula('Introduzca la matrícula del coche (NNNNXXX)')
+                    consumo = parseInt( await leerTeclado('Introduzca el consumo del vehículo(Litros cada 100KM)'))
+                    let coche=new Coche(matricula, consumo)
+                    let existe = false
+                    coches.forEach(Coche => {
+                        if (coche.matricula==Coche.matricula){
+                            existe=true
+                        }
+                    });
+                    if (existe){
+                        console.log('Este coche ya existe')
+                    } else{
+                        coches.push(coche)
                     }
-                });
-                if (existe){
-                    console.log('Este coche ya existe')
-                } else{
-                    coches.push(coche)
+                } catch (error) {
+                    console.log(error)
                 }
                 break
             case 2:
