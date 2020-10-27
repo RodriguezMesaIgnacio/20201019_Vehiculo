@@ -91,8 +91,12 @@ const main = async() => {
                                     break
                                 case 2:
                                     if(coches[index].arrancado){
-                                        console.log('Apagando coche')
-                                        coches[index].botonArrancado()
+                                        try {
+                                            coches[index].botonArrancado()
+                                            console.log('Apagando coche')
+                                        } catch (error) {
+                                            console.log(error)
+                                        }
                                     }else{
                                         console.log('Encendiendo coche')
                                         coches[index].botonArrancado()

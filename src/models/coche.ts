@@ -27,8 +27,11 @@ export class Coche {
         if(this._arrancado==false){
             this._arrancado=true
         }else{
-            this._arrancado=false
-            this._velocidad=0
+            if (this._velocidad!=0){
+                throw 'ERROR no puede apagar el coche si no está parado'
+            } else {
+                this._arrancado=false
+            }
         }
     }
 
