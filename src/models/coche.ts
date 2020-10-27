@@ -47,8 +47,12 @@ export class Coche {
         }
     }
 
-    public consumido(t:number){
-        return (this._velocidad/t)*(this._consumo/100)
+    public consumido(t:number){ 
+        if(!this._arrancado || this._velocidad==0){
+            throw 'ERROR, no puedes calcular el consumo de un coche parado o no arrancado'
+        } else {
+            return (this._velocidad/t)*(this._consumo/100)
+        }
     }
 
     public imprimirCoche(){

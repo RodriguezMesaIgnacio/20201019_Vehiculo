@@ -117,8 +117,12 @@ const main = async() => {
                                     break
                                 case 4:
                                     let t:number
-                                    t=parseInt(await leerTeclado("Introduzca el tiempo en horas que lleva el vehículo a la velocidad actual"))
-                                    console.log(`${coches[index].consumido(t)}`)
+                                    try {
+                                        t=parseInt(await leerTeclado("Introduzca el tiempo en horas que lleva el vehículo a la velocidad actual"))
+                                        console.log(`El coche ha consumido ${coches[index].consumido(t)} litros`)
+                                    } catch (error) {
+                                        console.log(error)
+                                    }
                                     break
                                 case 0:
                                     console.log('\n--VOLVIENDO A LA LISTA DE COCHES--')
