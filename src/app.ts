@@ -80,8 +80,6 @@ const main = async() => {
                     coches.forEach(Coche => {
                         if(Coche.matricula==m1){
                            index=coches.indexOf(Coche)
-                        }else{
-                            console.log('Este coche no existe')
                         }
                     });
                     if(index!=-1){
@@ -132,6 +130,8 @@ const main = async() => {
                                     break
                             }
                         } while (n2!=0);
+                    } else{
+                        console.log('Este coche no existe')
                     }
                 }
                 break
