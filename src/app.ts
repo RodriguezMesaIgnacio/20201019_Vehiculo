@@ -84,31 +84,32 @@ const main = async() => {
                     });
                     if(index!=-1){
                         let n2:number
+                        let miCoche=coches[index]
                         do {
                             n2 = await menu2()
                             switch(n2){
                                 case 1:
                                     console.log('Viendo el coche elegido')
-                                    console.log(coches[index].imprimirCoche())
+                                    console.log(miCoche.imprimirCoche())
                                     break
                                 case 2:
-                                    if(coches[index].arrancado){
+                                    if(miCoche.arrancado){
                                         try {
-                                            coches[index].botonArrancado()
+                                            miCoche.botonArrancado()
                                             console.log('Apagando coche')
                                         } catch (error) {
                                             console.log(error)
                                         }
                                     }else{
                                         console.log('Encendiendo coche')
-                                        coches[index].botonArrancado()
+                                        miCoche.botonArrancado()
                                     }
                                     break
                                 case 3:
                                     let v:number
                                     v=parseInt(await leerTeclado("Introduzca la nueva velocidad del vehículo"))
                                     try {
-                                      coches[index].velocidad=v 
+                                      miCoche.velocidad=v 
                                     } catch (error) {
                                         console.log(error)
                                     }
@@ -117,7 +118,7 @@ const main = async() => {
                                     let t:number
                                     try {
                                         t=parseInt(await leerTeclado("Introduzca el tiempo en horas que lleva el vehículo a la velocidad actual"))
-                                        console.log(`El coche ha consumido ${coches[index].consumido(t)} litros`)
+                                        console.log(`El coche ha consumido ${miCoche.consumido(t)} litros`)
                                     } catch (error) {
                                         console.log(error)
                                     }
