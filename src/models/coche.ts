@@ -4,26 +4,26 @@ export class Coche {
     private _arrancado : boolean
     private _velocidad : number
 
-    public constructor (matricula:string, consumo:number){
+    constructor (matricula:string, consumo:number){
         this._matricula = matricula
         this._consumo = consumo
         this._arrancado = false 
         this._velocidad = 0
     }
 
-    public get matricula(){
+    get matricula(){
         return this._matricula
     }
 
-    public get consumo(){
+    get consumo(){
         return this._consumo
     }
 
-    public get arrancado(){
+    get arrancado(){
         return this._arrancado
     }
 
-    public botonArrancado(){
+    botonArrancado(){
         if(this._arrancado==false){
             this._arrancado=true
         }else{
@@ -35,11 +35,11 @@ export class Coche {
         }
     }
 
-    public get velocidad(){
+    get velocidad(){
         return this._velocidad
     }
 
-    public set velocidad(n:number){
+    set velocidad(n:number){
         if(this._arrancado==false){
             throw 'ERROR, no puedes cambiar la velocidad a un coche que no está arrancado'
         } else {
@@ -47,7 +47,7 @@ export class Coche {
         }
     }
 
-    public consumido(t:number){ 
+    consumido(t:number){ 
         if(!this._arrancado || this._velocidad==0){
             throw 'ERROR, no puedes calcular el consumo de un coche parado o no arrancado'
         } else {
@@ -55,7 +55,7 @@ export class Coche {
         }
     }
 
-    public imprimirCoche(){
+    imprimirCoche(){
         return `El coche con matricula ${this.matricula} va a ${this._velocidad} km/h y consume ${this._consumo} L cada 100 km`
     }
 
