@@ -16,11 +16,11 @@ const main = async() => {
                     consumo = parseInt(await leeNumero('Introduzca el consumo del vehículo(Litros cada 100KM)'))
                     let coche=new Coche(matricula, consumo)
                     let existe = false
-                    coches.forEach(Coche => {
-                        if (coche.matricula==Coche.matricula){
+                    for (let c of coches){
+                        if (coche.matricula==c.matricula){
                             existe=true
                         }
-                    });
+                    }
                     if (existe){
                         console.log('Este coche ya existe')
                     } else{
@@ -35,9 +35,9 @@ const main = async() => {
                     console.log('No existen coches creados')
                 } else {
                     console.log('Usted está imprimiendo los coches')
-                    coches.forEach(Coche => {
-                        console.log(`${Coche.imprimirCoche()}`)
-                    });
+                    for (let c of coches){
+                        console.log(`${c.imprimirCoche()}`)
+                    }
                 }
                 break
             case 3:
@@ -46,19 +46,19 @@ const main = async() => {
                     console.log('No existen coches creados')
                 } else {
                     console.log('Estos son los coches que existen')
-                    coches.forEach(Coche => {
-                        console.log(`${Coche.imprimirCoche()}`)
-                    });
+                    for (let c of coches){
+                        console.log(`${c.imprimirCoche()}`)
+                    }
                     let m2:String
                     m2=await leerTeclado('Introduzca la matrícula del coche que quiera borrar')
                     let e:boolean=false
                     let index=0
-                    coches.forEach(Coche => {
-                        if (m2==Coche.matricula){
-                            index=coches.indexOf(Coche)
+                    for (let c of coches){
+                        if (m2==c.matricula){
+                            index=coches.indexOf(c)
                             e=true
                         }
-                    })
+                    }
                     if (e){
                        coches.splice(index,1)
                     } else {
@@ -72,16 +72,16 @@ const main = async() => {
                 } else {
                     let m1:string
                     console.log('Elija usted la matrícula de un coche')
-                    coches.forEach(Coche => {
-                        console.log(`${Coche.imprimirCoche()}`)
-                    });
+                    for (let c of coches){
+                        console.log(`${c.imprimirCoche()}`)
+                    }
                     m1=await leerTeclado('Introduzca la matrícula del coche')
                     let index:number=-1
-                    coches.forEach(Coche => {
-                        if(Coche.matricula==m1){
-                           index=coches.indexOf(Coche)
-                        }
-                    });
+                    for(let c of coches){
+                        if(c.matricula==m1){
+                            index=coches.indexOf(c)
+                         }
+                    }
                     if(index!=-1){
                         let n2:number
                         let miCoche=coches[index]
