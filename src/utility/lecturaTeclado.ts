@@ -32,3 +32,21 @@ export let leeMatricula = async (prompt: string) => {
         return matricula
     }
 }
+
+export let leeNumero = async (prompt: string) => {
+    let num: string
+    num = await leeLinea(prompt)
+    readlineI.close()
+    let t=Array.from(num)
+    let esNumero=true
+    t.forEach(e => {
+        if (!e.charAt(0).match(/[0-9]/)){
+            esNumero=false
+        }
+    });
+    if (!esNumero){
+        throw 'ERROR no ha introducido un número válido'
+    } else {
+        return num
+    }
+}

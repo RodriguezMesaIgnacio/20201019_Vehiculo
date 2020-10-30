@@ -1,6 +1,6 @@
 import { Coche } from './models/coche'
 import { menu, menu2 } from './utility/menu'
-import { leerTeclado, leeMatricula } from './utility/lecturaTeclado'
+import { leerTeclado, leeMatricula, leeNumero } from './utility/lecturaTeclado'
 
 const main = async() => {
     let coches: Array<Coche> = new Array()
@@ -13,7 +13,7 @@ const main = async() => {
                 let matricula:string , consumo:number
                 try {
                     matricula = await leeMatricula('Introduzca la matrícula del coche (NNNNXXX)')
-                    consumo = parseInt( await leerTeclado('Introduzca el consumo del vehículo(Litros cada 100KM)'))
+                    consumo = parseInt(await leeNumero('Introduzca el consumo del vehículo(Litros cada 100KM)'))
                     let coche=new Coche(matricula, consumo)
                     let existe = false
                     coches.forEach(Coche => {
@@ -107,9 +107,9 @@ const main = async() => {
                                     break
                                 case 3:
                                     let v:number
-                                    v=parseInt(await leerTeclado("Introduzca la nueva velocidad del vehículo"))
-                                    try {
-                                      miCoche.velocidad=v 
+                                    try {    
+                                        v=parseInt(await leeNumero("Introduzca la nueva velocidad del vehículo"))
+                                        miCoche.velocidad=v 
                                     } catch (error) {
                                         console.log(error)
                                     }
@@ -117,7 +117,7 @@ const main = async() => {
                                 case 4:
                                     let t:number
                                     try {
-                                        t=parseInt(await leerTeclado("Introduzca el tiempo en horas que lleva el vehículo a la velocidad actual"))
+                                        t=parseInt(await leeNumero("Introduzca el tiempo en horas que lleva el vehículo a la velocidad actual"))
                                         console.log(`El coche ha consumido ${miCoche.consumido(t)} litros`)
                                     } catch (error) {
                                         console.log(error)
